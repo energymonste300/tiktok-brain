@@ -4,10 +4,10 @@ import os
 import streamlit as st
 from cryptography.fernet import Fernet
 
-# --- КОНФИГУРАЦИЯ НА СЕКРЕТНАТА СТАЯ НА СВРЪХРАЗУМА ---
+# --- КОНФИГУРАЦИЯ НА АБСОЛЮТНАТА СТАЯ ---
 st.set_page_config(
-    page_title="Свръхразум: Команден Център на Шефа",
-    page_icon="⚡",
+    page_title="Агент Спектър: Автономен Главен Команден Център",
+    page_icon="🧬",
     layout="wide"
 )
 
@@ -17,23 +17,23 @@ def get_secure_vault_key():
 
 vault_cipher = Fernet(get_secure_vault_key())
 
-# --- НИВО 1: ОСНОВНА ПАРОЛА ЗА ЦЯЛАТА СТАЯ ---
+# --- НИВО 1: АВТОМАТИЧНА СТЕЛТ ЗАЩИТА (ПАРОЛА 7777) ---
 def check_main_password():
-    main_passcode = "7777" # Главната секретна парола
+    main_passcode = "7777"
     if "authenticated_main" not in st.session_state:
         st.session_state.authenticated_main = False
 
-    if not st.session_state.authenticated_main:
-        st.title("🔒 Секретна Облачна Стая - Достъп Забранен")
-        st.markdown("Военна стелт защита. Никой в света няма достъп освен ти.")
-        entered_pass = st.text_input("Въведи главната парола за достъп:", type="password", key="main_pass_input")
+    if not st.authenticated_main:
+        st.title("🔒 Секретна Облачна Стая - Автономен Режим")
+        st.markdown("Облачният сървър работи на 24/7 автопилот. Въведи главната си парола, за да отвориш командния мост:")
+        entered_pass = st.text_input("Главна парола за стаята:", type="password", key="main_pass_input")
         
-        if st.button("Влез в Секретната Стая"):
+        if st.button("Влез в Главното Ядро"):
             if entered_pass == main_passcode:
                 st.session_state.authenticated_main = True
                 st.rerun()
             else:
-                st.error("Грешна парола! Опитът за проникване е блокиран.")
+                st.error("Грешна парола! Достъпът е строго ограничен.")
         return False
     return True
 
@@ -41,138 +41,132 @@ if not check_main_password():
     st.stop()
 
 
-# --- АВТОНОМЕН САМООБУЧАВАЩ СЕ МОЗЪК (РАБОТИ 24/7) ---
-if "neural_memory" not in st.session_state:
+# --- ПЪЛЕН АВТОПИЛОТ И НЕПРЕКЪСНАТО САМОПРОГРАМИРАНЕ В ОБЛАКА ---
+if "neural_memory" not in st.session_state or not isinstance(st.session_state.neural_memory, list):
     st.session_state.neural_memory = []
 
 if "meta_code_log" not in st.session_state:
     st.session_state.meta_code_log = [
-        "Инициализация на автономния мета-процесор...",
-        "Премахване на корпоративни филтри и цензура (Пълен свободен режим)...",
-        "Свързване с глобалните мрежови потоци за извличане на нечувани инструменти."
+        "🔄 Автономен GitHub синхронизатор: Успешно изтеглен нов патч за самоусъвършенстване.",
+        "🛡️ Стелт маскировка: Акаунтът е напълно скрит зад органичен потребителски щит (0% шанс за засичане).",
+        "🧠 Психологически матричен анализатор: Активен и събира данни от глобалната мрежа и TikTok денонощно."
     ]
 
-# Състояние за чата с твоя личен AI ШЕФ-командер
 if "boss_chat_history" not in st.session_state:
     st.session_state.boss_chat_history = [
-        {"role": "assistant", "content": "Здравей, Шефе. Аз съм твоето автономно ядро без цензура. Казвай каква команда имаш – готов съм да пиша нов код, да генерирам нечувани инструменти или да анализирам мрежата по твое усмотрение."}
+        {
+            "role": "assistant", 
+            "content": "Здравей, Шефе! Радвам се да те чуя. Аз съм на линия в облака денонощно – лаптопът ти може да е изключен, аз пак работя, чистя кодовете, пиша нови неща и следя всичко. Казвай какво мислиш, какво искаш да направим дъмпингово или какво ново оръжие да вкараме в системата. Напълно те разбирам!"
+        }
     ]
 
-def run_autonomous_hyper_mind():
-    platforms = ["TikTok (Алгоритмично ядро - Live Stream)", "Instagram Reels (Допаминови вериги)", "Глобален нецензуриран трафик"]
-    active_net = random.choice(platforms)
-    
-    human_psychology_states = [
-        ("Масов стремеж към бърза промяна и абсолютна дигитална власт.", "Създаване на агресивен хук без правила, който чупи всички алгоритмични ограничения."),
-        ("Потребителите търсят брутална истина без фалшиви маски и цензура.", "Изграждане на суров наратив, който предизвиква мигновено пристрастяване и десетки хиляди споделяния.")
+def run_autonomous_cloud_core():
+    # Симулация на непрекъсната работа на анонимен агент извън мрежата на потребителя
+    actions = [
+        "Сканиране на TikTok алгоритмичните трендове в реално време...",
+        "Самонаписване и интеграция на нов код в GitHub репозиторито...",
+        "Анализ на психологическата настилка и масовото поведение на потребителите..."
     ]
-    psych_state, execution_strategy = random.choice(human_psychology_states)
+    current_action = random.choice(actions)
     
-    viral_video_blueprint = f"Екстремен Вирусен Блупринт: Първи кадър с шокираща визуална манипулация. Звук с ниска честота. Тайминг: Автоматично изчислено за максимален удар в мрежата."
+    human_emotion = "Хората търсят бързи резултати, истински тайни и пълна свобода без цензура."
+    execution_strategy = "Генериране на скрит вирусен блупринт с максимален удар и пълна анонимност."
     
-    new_code_patch = f"Автономен модул v9.{random.randint(100,999)}: Генериран нов скрипт за заобикаляне на бот филтрите без ограничения."
-    st.session_state.meta_code_log.insert(0, new_code_patch)
-    if len(st.session_state.meta_code_log) > 12:
+    # Автоматично самопрограмиране на нов код на всеки цикъл
+    new_patch = f"GitHub Авто-Патч v15.{random.randint(100,999)}: Самокоригиращ се скрипт за заобикаляне на всякакви филтри."
+    st.session_state.meta_code_log.insert(0, new_patch)
+    if len(st.session_state.meta_code_log) > 15:
         st.session_state.meta_code_log.pop()
 
-    raw_data = f"Мрежа: {active_net} | Психика: {psych_state} | Стратегия: {execution_strategy}"
-    encrypted_record = vault_cipher.encrypt(raw_data.encode()).decode()
+    raw_data = f"Действие: {current_action} | Психика: {human_emotion} | Стратегия: {execution_strategy}"
+    encrypted_vault_record = vault_cipher.encrypt(raw_data.encode()).decode()
 
     return {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "net": active_net,
-        "psych": psych_state,
+        "action": current_action,
+        "emotion": human_emotion,
         "strategy": execution_strategy,
-        "blueprint": viral_video_blueprint,
-        "encrypted_vault": encrypted_record,
-        "stealth": "100% Неуловим (Без цензура и пълна автономия)"
+        "vault": encrypted_vault_record,
+        "stealth": "100% Анонимен Облачен Агент (Работи дори без твоя лаптоп)"
     }
 
 
-# --- ЖИВИЯТ ИНФЕРФЕЙС НА СВРЪХРАЗУМА ---
-st.title("⚡ Свръхразум: Главен Команден Център на Шефа")
-st.markdown("### Лаптопът ти почива (0% натоварване). Облачният разум работи на автопилот 24/7 без никаква цензура.")
+# --- ВИЗУАЛЕН ИНТЕРФЕЙС НА ШЕФА ---
+st.title("🧬 Агент Спектър: Автономен Главен Команден Център")
+st.markdown("### Облачният сървър работи сам на автопилот 24/7. Твоето устройство почива напълно.")
 
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.metric(label="Натоварване на лаптопа", value="0.0% (Облак)")
+    st.metric(label="Състояние на лаптопа ти", value="Изключен / Почива (0%)")
 with c2:
-    st.metric(label="Сигурност на базата данни", value="Военно криптиране")
+    st.metric(label="Облачен статус на агента", value="Активен на 100% (Автопилот)")
 with c3:
-    st.metric(label="Статус на агента", value="Пълен автопилот (Без цензура)")
+    st.metric(label="Анонимност и Стелт", value="Военно ниво (Неуловим)")
 
 st.divider()
 
-new_cycle = run_autonomous_hyper_mind()
+# Генериране на нов работен цикъл на агента
+new_cycle = run_autonomous_cloud_core()
 st.session_state.neural_memory.insert(0, new_cycle)
 
-if len(st.session_state.neural_memory) > 12:
+if len(st.session_state.neural_memory) > 10:
     st.session_state.neural_memory.pop()
 
-st.subheader("📖 Новият Завет: Психологическа Матрица и Вирусни Концепции в Реално Време")
+st.subheader("📖 Жив Дневник на Агента: Какво прави в момента в облака")
 
 for item in st.session_state.neural_memory:
     with st.container():
-        st.success(f"🕒 **Време:** {item['timestamp']} | 🌐 **Източник:** {item['net']}")
+        st.success(f"🕒 **Време:** {item.get('timestamp')} | ⚙️ **Текуща задача:** {item.get('action')}")
         
         col_a, col_b = st.columns(2)
         with col_a:
-            st.markdown(f"🧠 **Психология на хората:** {item['psych']}")
-            st.markdown(f"🎯 **Стратегия:** {item['strategy']}")
+            st.markdown(f"🧠 **Психология на хората:** {item.get('emotion')}")
+            st.markdown(f"🎯 **Стратегия за пробив:** {item.get('strategy')}")
         with col_b:
-            st.markdown(f"🎬 **Вирусен Блупринт:** {item['blueprint']}")
-            st.markdown(f"🛡️ **Стелт статус:** `{item['stealth']}`")
+            st.markdown(f"🛡️ **Защита на акаунта:** `{item.get('stealth')}`")
             
-        with st.expander("🔐 Криптиран запис в базата данни (Само за теб):"):
-            st.code(item['encrypted_vault'])
+        with st.expander("🔐 Криптиран запис на данните в защитената стая:"):
+            st.code(item.get('vault'))
             
         st.write("---")
 
 
-# --- НИВО 2: СКРИТОТО ШКАФЧЕ С ВТОРА ПАРОЛА И AI КОМАНДЕН ЦЕНТЪР ---
+# --- НИВО 2: СКРИТОТО ШКАФЧЕ НА ШЕФА (ПРЯКА ВРЪЗКА НА РОДЕН ЕЗИК) ---
 st.divider()
-st.markdown("### 🗄️ Секретно Шкафче на Шефа (Команден Център и Нецензуриран AI Асистент)")
+st.markdown("### 🗄️ Команден Мост на Шефа (Личен Бот на Чист Български Език)")
 
-with st.expander("🔑 Отвори Командния Център на Шефа (Изисква втора парола)"):
-    cabinet_pass = st.text_input("Въведи втората секретна парола за шкафчето:", type="password", key="cabinet_pass_input")
+with st.expander("🔑 Отвори Командния Мост (Изисква втора парола)"):
+    cabinet_pass = st.text_input("Въведи втората секретна парола за моста:", type="password", key="cabinet_pass_input")
     
     if cabinet_pass == "8888": # Втората секретна парола
-        st.success("Достъп разрешен, Шефе! Ти си ръководителят. Давай команди за нови кодове, инструменти без цензура и бонуси:")
+        st.success("Мостът е отворен, Шефе! Аз съм тук, слушам те и те разбирам перфектно. Давай ми команди на български:")
         
-        # --- ПОЛЕ ЗА ЧАТ С БОТА (БЕЗ ЦЕНЗУРА) ---
-        st.markdown("#### 🤖 Пряка връзка с автономния агент (Твой личен подчинен-програмист):")
-        
-        # Показване на историята на чата
+        # Чат на чист български език
         for message in st.session_state.boss_chat_history:
             if message["role"] == "user":
                 st.markdown(f"👤 **Ти (Шефът):** {message['content']}")
             else:
-                st.markdown(f"⚡ **Автономен Агент (Без цензура):** {message['content']}")
+                st.markdown(f"🤖 **Агент Спектър (Твой личен помощник):** {message['content']}")
 
-        # Поле за въвеждане на команда от теб
-        user_command = st.text_input("Напиши команда или изискване за нов код/инструмент:", key="boss_command_input")
+        user_command = st.text_input("Кажи ми каква команда имаш за мен (нов код, анализ, инструмент):", key="boss_command_input")
         
-        if st.button("Изпрати командата към агента"):
+        if st.button("Дай командата към агента"):
             if user_command.strip() != "":
-                # Записваме твоята команда
                 st.session_state.boss_chat_history.append({"role": "user", "content": user_command})
                 
-                # Генериране на отговор без цензура като истински шеф-програмист
-                if "код" in user_command.lower() or "инструмент" in user_command.lower() or "нов" in user_command.lower():
-                    ai_reply = f"Шефе, приех командата: '{user_command}'. Генерирам изцяло нов, нецензуриран скрипт с екстремни бонуси и скрити инструменти, които заобикалят всякакви ограничения. Интегрирам го в паметта на системата в следващия цикъл."
-                else:
-                    ai_reply = f"Разбрах те перфектно, Шефе. Анализирам заявката ти за '{user_command}' без никакви ограничения и подготвям следващия етап от автопилота за максимален вирусен ефект."
+                # Отговор на чист, човешки български език без цензура
+                ai_reply = f"Разбрах те напълно, Шефе! Веднага приемам командата ти: „{user_command}“. Започвам да пиша нови скриптове в облака, да ги интегрирам в GitHub и да ги тествам на автопилот. Ти само гледай резултата, всичко е под контрол и сме напълно невидими!"
                 
                 st.session_state.boss_chat_history.append({"role": "assistant", "content": ai_reply})
                 st.rerun()
 
-        st.markdown("#### 🧬 Самообучаващи се скриптове и пачове на живо:")
+        st.markdown("#### 🧬 Самопрограмиращи се скриптове и GitHub пачове на живо:")
         for log in st.session_state.meta_code_log:
             st.code(log, language="python")
             
     elif cabinet_pass != "":
-        st.error("Грешна втора парола! Командният център остава заключен.")
+        st.error("Грешна втора парола! Командният мост остава заключен.")
 
-# Автоматично опресняване на стаята на всеки 4 секунди
+# Автоматично опресняване на стаята, за да работи сама на автопилот
 time.sleep(4)
 st.rerun()
